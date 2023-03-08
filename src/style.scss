@@ -72,3 +72,17 @@
     }
   }
 }
+
+.home {
+  background-color: #a7bcff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .container {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    height: 50vh;
+  }
+}
