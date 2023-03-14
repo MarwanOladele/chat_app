@@ -1,10 +1,10 @@
 import addAvatar from "../images/addAvatar.png";
 // import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, storage } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useState } from "react";
-import { async } from "@firebase/util";
+import { doc, setDoc } from "firebase/firestore";
 
 const Register = () => {
   const [error, setError] = useState(false);
@@ -30,11 +30,17 @@ const Register = () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateProfile(res.user, {
               displayName,
-              photoURL: downloadURL
+              photoURL: downloadURL,
+            });
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
             });
           });
         }
-      );
+      ); 
     } catch (error) {
       setError(true);
     }
