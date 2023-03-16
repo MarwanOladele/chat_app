@@ -6,15 +6,18 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div>
-      <Register />
-    </div>
-    // <Router>
-    //   <Routes>
-    //     <Route index element={<Register />} />
-    //     <Route path="login" element={<Login />} />
-    //   </Routes>
-    // </Router>
+    // <div>
+    //   <Register />
+    // </div>
+    <Router>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
