@@ -1,5 +1,5 @@
 import addAvatar from "../images/addAvatar.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage } from "../firebase";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -22,7 +22,7 @@ const Register = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
-    
+
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -100,9 +100,9 @@ const Register = () => {
         </form>
         <p>
           You have an account?
-          {/* <Link to='./login'>
+          <Link to='./login'>
             <span>Login</span>
-          </Link> */}
+          </Link>
         </p>
       </div>
     </div>
